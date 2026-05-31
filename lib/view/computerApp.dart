@@ -1,5 +1,5 @@
 import 'package:computer_store/core/const/color.dart';
-import 'package:computer_store/view/home/homeScreen.dart';
+import 'package:computer_store/view/home/page/homeScreen.dart';
 import 'package:computer_store/view/home/widget/menu.dart';
 import 'package:flutter/material.dart';
 
