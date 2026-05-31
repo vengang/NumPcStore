@@ -22,7 +22,7 @@ class _HomescreenState extends State<Homescreen> {
           SizedBox(width: 25),
           Icon(Icons.shopping_bag_outlined, size: 25),
         ],
-        leading: Icon(Icons.menu),
+
         title: Text(
           'Computer Store',
           style: TextStyle(
@@ -36,6 +36,7 @@ class _HomescreenState extends State<Homescreen> {
       body: _buildBody(),
     );
   }
+
   Widget _buildBody() {
     return SingleChildScrollView(
       child: Column(

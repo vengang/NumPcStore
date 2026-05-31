@@ -1,21 +1,22 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:computer_store/core/const/color.dart';
+import 'package:computer_store/provider/urlUtil.dart';
 import 'package:computer_store/service/apiModel.dart';
 import 'package:flutter/material.dart';
 
 class Productdetail extends StatelessWidget {
   // const Productdetail({super.key});
   final ProductModel item;
+  final _urlUtil = Urlutil();
 
-  const Productdetail(this.item, {super.key});
+  Productdetail(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    // final item = this.wi.item;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "About Product Detail",
+          "Our Product",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: AppColors.lightBlue,
@@ -119,7 +120,7 @@ class Productdetail extends StatelessWidget {
             ],
           ),
         ),
-        Divider(thickness: .5),
+        Divider(thickness: .5, color: Colors.grey),
         Center(
           child: Text(
             "Descriptions",
@@ -142,19 +143,17 @@ class Productdetail extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 10,
-                  offset: Offset(0, 5),
+                  offset: Offset(0, 1),
                 ),
               ],
             ),
-            height: 200,
+            height: 180,
             //inside padding
             padding: EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("- Brand: ${item.name}"),
-                SizedBox(height: 5),
                 Text("- CPU: ${item.specs.cpu}"),
                 SizedBox(height: 5),
                 Text("- Ram: ${item.specs.ram}"),
@@ -169,6 +168,73 @@ class Productdetail extends StatelessWidget {
             ),
           ),
         ),
+
+        SizedBox(height: 12),
+        //contact us
+        Divider(thickness: .5, color: Colors.grey),
+        Center(
+          child: Text(
+            "Contact us to ask information",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.lightBlue,
+            ),
+          ),
+        ),
+        SizedBox(height: 12),
+        // contact us to get information
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          child: Container(
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: .08),
+                  blurRadius: 15,
+                  offset: Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                _contactItem(
+                  icon: Icons.call,
+                  iconColor: Colors.green,
+                  text: "093587414",
+                  onTap: () {
+                    String numbers = "+855 93587414";
+                    _urlUtil.open("tel:${numbers}");
+                  },
+                ),
+
+                const Divider(color: Colors.grey),
+                _contactItem(
+                  icon: Icons.facebook,
+                  iconColor: const Color(0xFF1877F2),
+                  text: "Num FIT",
+                  onTap: () {
+                    String facebook = "https://web.facebook.com/num.fit.info";
+                    _urlUtil.open(facebook);
+                  },
+                ),
+                const Divider(color: Colors.grey),
+                _contactItem(
+                  icon: Icons.telegram,
+                  iconColor: const Color(0xFF229ED9),
+                  text: "Num FIT",
+                  onTap: () {
+                    String telegram = "https://t.me/numtelegram";
+                    _urlUtil.open(telegram);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -176,7 +242,6 @@ class Productdetail extends StatelessWidget {
   //slider show
   Widget _sliderShow() {
     List images = [item.image];
-
     return Padding(
       padding: const EdgeInsets.all(12),
       child: CarouselSlider.builder(
@@ -192,6 +257,48 @@ class Productdetail extends StatelessWidget {
           enlargeCenterPage: true,
           aspectRatio: 16 / 9,
           viewportFraction: 0.9,
+        ),
+      ),
+    );
+  }
+
+  Widget _contactItem({
+    required IconData icon,
+    required Color iconColor,
+    required String text,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            Container(
+              width: 46,
+              height: 46,
+              decoration: BoxDecoration(
+                color: iconColor.withValues(alpha: .12),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: iconColor, size: 24),
+            ),
+
+            const SizedBox(width: 16),
+
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+
+            const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+          ],
         ),
       ),
     );
