@@ -11,6 +11,7 @@ class AddToCardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _addTocardProvider = context.watch<AddToCardProvider>().cardItem;
+    final _addTocardTotal = context.watch<AddToCardProvider>();
     //check fav
     final _favoritePro = context.watch<Favorateprovider>();
     return Scaffold(
@@ -192,6 +193,55 @@ class AddToCardPage extends StatelessWidget {
                 );
               },
             ),
+      bottomNavigationBar: Container(
+        height: 180,
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 28),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: .1),
+              blurRadius: 10,
+              offset: const Offset(0, -3),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            // sub total
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Sub Total:'),
+                Text('\$${_addTocardTotal.total().toString()}'),
+              ],
+            ),
+            SizedBox(height: 12),
+            // total
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'TOTAL :',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '\$${_addTocardTotal.total().toString()}',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Spacer(),
+            //check out btn
+            FilledButton(onPressed: () {}, child: Text('Check Out')),
+            SizedBox(height: 8),
+          ],
+        ),
+      ),
     );
   }
 }
