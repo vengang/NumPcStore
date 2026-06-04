@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:computer_store/core/const/color.dart';
+import 'package:computer_store/provider/favorateProvider.dart';
 import 'package:computer_store/service/apiModel.dart';
 import 'package:computer_store/service/apiService.dart';
 import 'package:computer_store/view/home/widget/productDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:provider/provider.dart';
 
 class Allproduct extends StatelessWidget {
   const Allproduct({super.key});
@@ -19,7 +21,7 @@ class Allproduct extends StatelessWidget {
         if (snapshot.hasError) {
           return Text("Errre");
         } else if (snapshot.connectionState == ConnectionState.done) {
-          return _buildListView(snapshot.data);
+          return _buildListView(snapshot.data, context);
         }
         return CircularProgressIndicator();
       },
@@ -27,7 +29,8 @@ class Allproduct extends StatelessWidget {
   }
 
   //data respone
-  Widget _buildListView(List<ProductModel>? items) {
+  Widget _buildListView(List<ProductModel>? items, BuildContext context) {
+    final _favorite = context.watch<Favorateprovider>();
     if (items == null) {
       return Center();
     }
@@ -104,7 +107,15 @@ class Allproduct extends StatelessWidget {
                       ],
                     ),
                     //more view
-                    Icon(Icons.favorite_border_outlined),
+                    IconButton(
+                      onPressed: () {
+                        context.read<Favorateprovider>().toggleFavorite(item);
+                      },
+                      icon: Icon(
+                        Icons.favorite,
+                        color: _favorite.isFav(item) ? Colors.red : Colors.grey,
+                      ),
+                    ),
                   ],
                 ),
               ),

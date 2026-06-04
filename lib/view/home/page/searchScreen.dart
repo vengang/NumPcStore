@@ -35,7 +35,7 @@ class _SearchscreenState extends State<Searchscreen> {
           ),
           child: TextField(
             controller: _searchCtal,
-            onSubmitted: (value) {
+            onSubmitted: (text) {
               setState(() {
                 _futureData = _service.search(_searchCtal.text.trim());
               });
