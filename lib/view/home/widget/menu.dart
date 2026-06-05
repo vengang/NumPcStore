@@ -1,5 +1,6 @@
 import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/view/home/homeScreen.dart';
+import 'package:computer_store/view/home/widget/accout.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
@@ -11,7 +12,6 @@ class Menu extends StatelessWidget {
     return PersistentTabView(
       tabs: [
         PersistentTabConfig(
-          
           screen: Homescreen(),
           item: ItemConfig(icon: Icon(Icons.home), title: "Home"),
         ),
@@ -32,7 +32,7 @@ class Menu extends StatelessWidget {
         ),
 
         PersistentTabConfig(
-          screen: Container(),
+          screen: Accout(),
           item: ItemConfig(icon: Icon(Icons.person), title: "Me"),
         ),
       ],
