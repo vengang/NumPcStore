@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "836538872254",
+    "project_id": "numpcstore",
+    "storage_bucket": "numpcstore.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836538872254:android:ddc4d8fb6e4b9ad22189ef",
+        "android_client_info": {
+          "package_name": "com.example.computer_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaZjBSYYSJG8vHJY0IBnKdgKdb8DXLWKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
