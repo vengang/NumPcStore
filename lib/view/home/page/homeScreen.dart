@@ -18,11 +18,11 @@ class _HomescreenState extends State<Homescreen> {
       appBar: AppBar(
         // toolbarHeight: 70,
         actions: [
-          Icon(Icons.search, size: 25),
+          Icon(Icons.notifications_outlined, size: 25),
           SizedBox(width: 25),
           Icon(Icons.shopping_bag_outlined, size: 25),
         ],
-        leading: Icon(Icons.menu),
+
         title: Text(
           'Computer Store',
           style: TextStyle(
@@ -36,6 +36,7 @@ class _HomescreenState extends State<Homescreen> {
       body: _buildBody(),
     );
   }
+
   Widget _buildBody() {
     return SingleChildScrollView(
       child: Column(

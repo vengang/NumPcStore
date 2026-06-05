@@ -17,7 +17,7 @@ class Menu extends StatelessWidget {
         ),
 
         PersistentTabConfig(
-          screen: Container(),
+          screen: Searchscreen(),
           item: ItemConfig(icon: Icon(Icons.grid_view), title: "Browse"),
         ),
 

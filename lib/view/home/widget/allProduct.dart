@@ -34,7 +34,6 @@ class Allproduct extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-
       itemCount: items.length,
       itemBuilder: (context, index) {
         final item = items[index];
