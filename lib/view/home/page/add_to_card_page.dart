@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/provider/add_to_card.dart';
 import 'package:computer_store/provider/favorateProvider.dart';
 import 'package:computer_store/service/apiModel.dart';
@@ -15,7 +16,16 @@ class AddToCardPage extends StatelessWidget {
     //check fav
     final _favoritePro = context.watch<Favorateprovider>();
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text("My Card")),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "My Card",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: AppColors.lightBlue,
+          ),
+        ),
+      ),
       body: _addTocardProvider.isEmpty
           ? Center(child: Text('Card Is Empty!'))
           : ListView.builder(
@@ -217,7 +227,7 @@ class AddToCardPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Sub Total:'),
-                Text('\$${_addTocardTotal.total().toString()}'),
+                Text('\$${_addTocardTotal.total().toStringAsFixed(2)}'),
               ],
             ),
             SizedBox(height: 12),
@@ -230,14 +240,21 @@ class AddToCardPage extends StatelessWidget {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '\$${_addTocardTotal.total().toString()}',
+                  '\$${_addTocardTotal.total().toStringAsFixed(2)}',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
             Spacer(),
             //check out btn
-            FilledButton(onPressed: () {}, child: Text('Check Out')),
+            FilledButton(
+              style: OutlinedButton.styleFrom(
+                backgroundColor: Colors.blue[800],
+                padding: EdgeInsets.symmetric(horizontal: 50),
+              ),
+              onPressed: () {},
+              child: Text('Check Out'),
+            ),
             SizedBox(height: 8),
           ],
         ),

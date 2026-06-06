@@ -31,7 +31,6 @@ class Computerapp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: const Color(0xFF0F172A),
       ),
-
       home: Menu(),
     );
   }

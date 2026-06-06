@@ -23,7 +23,7 @@ class Allproduct extends StatelessWidget {
         } else if (snapshot.connectionState == ConnectionState.done) {
           return _buildListView(snapshot.data, context);
         }
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator());
       },
     );
   }
@@ -72,9 +72,7 @@ class Allproduct extends StatelessWidget {
                               color: Colors.grey.shade200,
                               borderRadius: BorderRadius.circular(16),
                             ),
-                            child: const Center(
-                              child: CircularProgressIndicator(),
-                            ),
+                            child: Center(child: CircularProgressIndicator()),
                           ),
                           errorWidget: (context, url, error) => Container(
                             decoration: BoxDecoration(

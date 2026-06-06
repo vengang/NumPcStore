@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/provider/favorateProvider.dart';
 import 'package:computer_store/view/home/widget/productDetail.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,16 @@ class Favoratepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Favorate')),
+      appBar: AppBar(
+        title: Text(
+          'Favorate',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: AppColors.lightBlue,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Consumer<Favorateprovider>(
         builder: (context, provider, child) {
           // condition check
