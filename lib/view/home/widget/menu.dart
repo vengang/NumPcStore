@@ -18,7 +18,6 @@ class Menu extends StatelessWidget {
           screen: Homescreen(),
           item: ItemConfig(icon: Icon(Icons.home), title: "Home"),
         ),
-
         PersistentTabConfig(
           screen: Searchscreen(),
           item: ItemConfig(icon: Icon(Icons.grid_view), title: "Browse"),
