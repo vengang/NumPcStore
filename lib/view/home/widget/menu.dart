@@ -1,6 +1,7 @@
 import 'package:computer_store/auth/main_page.dart';
 import 'package:computer_store/core/const/color.dart';
-import 'package:computer_store/view/home/homeScreen.dart';
+import 'package:computer_store/view/home/page/homeScreen.dart';
+import 'package:computer_store/view/home/page/searchScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
