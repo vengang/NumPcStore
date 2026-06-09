@@ -22,12 +22,12 @@ class Menu extends StatelessWidget {
         ),
 
         PersistentTabConfig(
-          screen: Container(),
+          screen: AddToCardPage(),
           item: ItemConfig(icon: Icon(Icons.shopping_cart), title: "Cart"),
         ),
 
         PersistentTabConfig(
-          screen: Container(),
+          screen: Favoratepage(),
           item: ItemConfig(icon: Icon(Icons.favorite_border), title: "Save"),
         ),
 
