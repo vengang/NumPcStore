@@ -9,7 +9,7 @@ class Computerapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       // light
       theme: ThemeData(
         brightness: Brightness.light,
@@ -18,7 +18,7 @@ class Computerapp extends StatelessWidget {
           secondary: AppColors.secondary,
           tertiary: AppColors.tertiary,
         ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 185, 51, 51),
+        // scaffoldBackgroundColor: const Color.fromARGB(255, 185, 51, 51),
       ),
       //dark
       darkTheme: ThemeData(

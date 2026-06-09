@@ -45,7 +45,14 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       // Navigator.of(context).pop();
+      //     },
+      //     icon: Icon(Icons.arrow_back_ios),
+      //   ),
+      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
