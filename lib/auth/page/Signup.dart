@@ -14,6 +14,7 @@ class _SignupState extends State<Signup> {
   final email = TextEditingController();
   final password = TextEditingController();
   final Comfirmpassword = TextEditingController();
+  final name = TextEditingController();
   bool _hidepassword = true;
 
   Future Register() async {
@@ -108,7 +109,19 @@ class _SignupState extends State<Signup> {
         Text("Create an account to get started"),
 
         SizedBox(height: 20),
-
+        Text(
+          "Name",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 10),
+        TextField(
+          controller: name,
+          decoration: InputDecoration(
+            hintText: "Enter your name",
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+          ),
+        ),
+        SizedBox(height: 10),
         Text(
           "Email Address",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
