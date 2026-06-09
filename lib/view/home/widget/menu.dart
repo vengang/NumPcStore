@@ -22,7 +22,6 @@ class Menu extends StatelessWidget {
           screen: Searchscreen(),
           item: ItemConfig(icon: Icon(Icons.grid_view), title: "Browse"),
         ),
-
         PersistentTabConfig(
           screen: AddToCardPage(),
           item: ItemConfig(icon: Icon(Icons.shopping_cart), title: "Cart"),
