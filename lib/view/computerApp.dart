@@ -1,5 +1,4 @@
 import 'package:computer_store/core/const/color.dart';
-import 'package:computer_store/view/home/page/homeScreen.dart';
 import 'package:computer_store/view/home/widget/menu.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ class Computerapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       // light
       theme: ThemeData(
         brightness: Brightness.light,
@@ -19,7 +18,7 @@ class Computerapp extends StatelessWidget {
           secondary: AppColors.secondary,
           tertiary: AppColors.tertiary,
         ),
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 185, 51, 51),
       ),
       //dark
       darkTheme: ThemeData(
