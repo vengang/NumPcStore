@@ -1,9 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:computer_store/view/computerApp.dart';
 import 'package:flutter/material.dart';
 import 'package:computer_store/provider/mulProvider.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
   runApp(providerApp());
 }
