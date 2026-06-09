@@ -1,8 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:computer_store/core/const/color.dart';
+import 'package:computer_store/provider/add_to_card.dart';
+import 'package:computer_store/provider/favorateProvider.dart';
 import 'package:computer_store/provider/urlUtil.dart';
 import 'package:computer_store/service/apiModel.dart';
+import 'package:computer_store/view/home/page/add_to_card_page.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:provider/provider.dart';
 
 class Productdetail extends StatelessWidget {
   // const Productdetail({super.key});
@@ -13,8 +19,17 @@ class Productdetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _favoriteProvider = context.watch<Favorateprovider>();
+    //add to card
+    final _addToCardProvider = context.read<AddToCardProvider>();
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_outlined),
+        ),
         title: Text(
           "Our Product",
           style: TextStyle(
@@ -22,47 +37,108 @@ class Productdetail extends StatelessWidget {
             color: AppColors.lightBlue,
           ),
         ),
+        actionsPadding: EdgeInsets.symmetric(horizontal: 18),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),
+          InkWell(
+            onTap: () {
+              pushScreen(context, screen: AddToCardPage());
+            },
+            child: Badge(
+              label: Text(
+                context.watch<AddToCardProvider>().totalItem().toString(),
+              ),
+              child: Icon(Icons.shopping_cart),
+            ),
+          ),
+          // Stack(
+          //   alignment: Alignment.topCenter,
+          //   children: [
+          //     IconButton(
+          //       onPressed: () {},
+          //       icon: Icon(Icons.add_shopping_cart_sharp),
+          //     ),
+          //     Positioned(
+          //       top: 8,
+          //       child: Container(
+          //         width: 15,
+          //         height: 15,
+          //         decoration: BoxDecoration(
+          //           color: Colors.red.shade300,
+          //           shape: BoxShape.circle,
+          //         ),
+          //         child: Text("1", textAlign: TextAlign.center),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
       body: _buildBody(),
-      bottomNavigationBar: _addToCard(),
+      bottomNavigationBar: _addToCard(context),
     );
   }
 
-  Widget _addToCard() {
+  Widget _addToCard(BuildContext context) {
+    // check favorite
+    final _favoriteProvider = context.watch<Favorateprovider>();
+    // add to card
+    final _addToCard = context.watch<AddToCardProvider>().cardItem;
     return BottomAppBar(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // like
-          Icon(Icons.favorite),
+          IconButton(
+            onPressed: () {
+              context.read<Favorateprovider>().toggleFavorite(item);
+            },
+            icon: Icon(
+              _favoriteProvider.isFav(item)
+                  ? Icons.favorite
+                  : Icons.favorite_border,
+              color: _favoriteProvider.isFav(item) ? Colors.red : Colors.grey,
+            ),
+          ),
           // add to card
-          Padding(
-            padding: EdgeInsetsGeometry.all(8),
-            child: Container(
-              width: 250,
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.blue[800],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.shopping_cart, color: Colors.white, size: 20),
-                  SizedBox(width: 8),
-                  Text(
-                    textAlign: TextAlign.center,
-                    "Add to cart",
-                    style: TextStyle(
+          InkWell(
+            onTap: () {
+              context.read<AddToCardProvider>().addToCard(item);
+              bool res = false;
+              if (!res) {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text("Add is Successful!")));
+              }
+            },
+            child: Padding(
+              padding: EdgeInsetsGeometry.all(8),
+              child: Container(
+                width: 250,
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.blue[800],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.shopping_cart_outlined,
                       color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                      size: 20,
                     ),
-                  ),
-                ],
+                    SizedBox(width: 8),
+                    Text(
+                      textAlign: TextAlign.center,
+                      "Add to cart",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -204,9 +280,9 @@ class Productdetail extends StatelessWidget {
                 _contactItem(
                   icon: Icons.call,
                   iconColor: Colors.green,
-                  text: "093587414",
+                  text: "012345678",
                   onTap: () {
-                    String numbers = "+855 93587414";
+                    String numbers = "+855 12345678";
                     _urlUtil.open("tel:${numbers}");
                   },
                 ),
@@ -249,7 +325,24 @@ class Productdetail extends StatelessWidget {
         itemBuilder: (context, index, viewIndex) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(images[index], fit: BoxFit.cover),
+            // child: Image.network(images[index], fit: BoxFit.cover),
+            child: CachedNetworkImage(
+              placeholder: (context, url) => Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Center(child: CircularProgressIndicator()),
+              ),
+              errorWidget: (context, url, error) => Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+              imageUrl: images[index],
+              fit: BoxFit.cover,
+            ),
           );
         },
         options: CarouselOptions(

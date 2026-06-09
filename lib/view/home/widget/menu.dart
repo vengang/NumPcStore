@@ -1,5 +1,7 @@
 import 'package:computer_store/auth/main_page.dart';
 import 'package:computer_store/core/const/color.dart';
+import 'package:computer_store/view/home/page/add_to_card_page.dart';
+import 'package:computer_store/view/home/page/favoratePage.dart';
 import 'package:computer_store/view/home/page/homeScreen.dart';
 import 'package:computer_store/view/home/page/searchScreen.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +23,13 @@ class Menu extends StatelessWidget {
           screen: Searchscreen(),
           item: ItemConfig(icon: Icon(Icons.grid_view), title: "Browse"),
         ),
-
         PersistentTabConfig(
-          screen: Container(),
+          screen: AddToCardPage(),
           item: ItemConfig(icon: Icon(Icons.shopping_cart), title: "Cart"),
         ),
 
         PersistentTabConfig(
-          screen: Container(),
+          screen: Favoratepage(),
           item: ItemConfig(icon: Icon(Icons.favorite_border), title: "Save"),
         ),
 

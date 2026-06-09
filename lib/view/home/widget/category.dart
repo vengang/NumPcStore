@@ -31,7 +31,7 @@ class Category extends StatelessWidget {
                         width: 85,
                         height: 65,
                         decoration: BoxDecoration(
-                          border: BoxBorder.all(color: AppColors.primary),
+                          border: BoxBorder.all(color: AppColors.lightBlue),
                           // color: Colors.grey.shade900,
                           shape: BoxShape.circle,
                         ),

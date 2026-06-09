@@ -1,3 +1,4 @@
+import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/view/home/widget/allProduct.dart';
 import 'package:computer_store/view/home/widget/category.dart';
 import 'package:computer_store/view/home/widget/newProduct.dart';
@@ -29,6 +30,7 @@ class _HomescreenState extends State<Homescreen> {
             // color: AppColors.primary,
             fontSize: 25,
             fontWeight: FontWeight.bold,
+            color: AppColors.lightBlue,
           ),
         ),
         actionsPadding: EdgeInsets.only(right: 25),

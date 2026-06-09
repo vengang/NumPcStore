@@ -41,7 +41,7 @@ class _SildershowState extends State<Sildershow> {
                 placeholder: (_, _) => Container(color: Colors.grey),
                 errorWidget: (_, _, _) =>
                     Container(color: Colors.grey.shade800),
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
                 width: double.maxFinite,
               ),
             );
