@@ -1,5 +1,6 @@
 import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/view/home/widget/menu.dart';
+import 'package:computer_store/view/home/widget/setting.dart';
 import 'package:flutter/material.dart';
 
 class Computerapp extends StatelessWidget {
@@ -30,7 +31,7 @@ class Computerapp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: const Color(0xFF0F172A),
       ),
-      home: Menu(),
+      home: Setting(),
     );
   }
 }
