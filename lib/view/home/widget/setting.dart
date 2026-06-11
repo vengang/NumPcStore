@@ -1,3 +1,5 @@
+import 'package:computer_store/view/home/widget/Darkmode.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Setting extends StatefulWidget {
@@ -8,6 +10,7 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,13 +34,13 @@ class _SettingState extends State<Setting> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Your name",
+                      user?.displayName ?? "Your name",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text("youname@gmial.com"),
+                    Text(user?.email ?? "No Email"),
                   ],
                 ),
               ),
@@ -61,7 +64,10 @@ class _SettingState extends State<Setting> {
               title: Text("Setting"),
               trailing: IconButton(
                 onPressed: () {
-                 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Darkmode()),
+                  );
                 },
                 icon: Icon(Icons.keyboard_arrow_right_outlined),
               ),
@@ -73,9 +79,7 @@ class _SettingState extends State<Setting> {
               leading: Icon(Icons.shopping_bag),
               title: Text("My Computer"),
               trailing: IconButton(
-                onPressed: () {
-                 
-                },
+                onPressed: () {},
                 icon: Icon(Icons.keyboard_arrow_right_outlined),
               ),
             ),
@@ -86,7 +90,9 @@ class _SettingState extends State<Setting> {
               leading: Icon(Icons.logout),
               title: Text("Logout"),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
                 icon: Icon(Icons.keyboard_arrow_right_outlined),
               ),
             ),
