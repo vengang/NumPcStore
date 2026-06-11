@@ -1,9 +1,11 @@
 import 'package:computer_store/core/const/color.dart';
+import 'package:computer_store/provider/darkMode.dart';
 import 'package:computer_store/view/home/widget/allProduct.dart';
 import 'package:computer_store/view/home/widget/category.dart';
 import 'package:computer_store/view/home/widget/newProduct.dart';
 import 'package:computer_store/view/home/widget/silderShow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -15,6 +17,7 @@ class _HomescreenState extends State<Homescreen> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    bool _isDark = context.watch<DarkMode>().isDarkMode;
     return Scaffold(
       appBar: AppBar(
         // toolbarHeight: 70,
@@ -22,6 +25,12 @@ class _HomescreenState extends State<Homescreen> {
           Icon(Icons.notifications_outlined, size: 25),
           SizedBox(width: 25),
           Icon(Icons.shopping_bag_outlined, size: 25),
+          IconButton(
+            onPressed: () {
+              context.read<DarkMode>().toggleDarkMode();
+            },
+            icon: Icon(_isDark ? Icons.dark_mode_outlined : Icons.light_mode),
+          ),
         ],
 
         title: Text(

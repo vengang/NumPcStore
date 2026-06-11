@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/provider/add_to_card.dart';
+import 'package:computer_store/provider/darkMode.dart';
 import 'package:computer_store/provider/favorateProvider.dart';
 import 'package:computer_store/service/apiModel.dart';
 import 'package:computer_store/view/home/widget/productDetail.dart';
@@ -13,6 +14,7 @@ class AddToCardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _addTocardProvider = context.watch<AddToCardProvider>().cardItem;
     final _addTocardTotal = context.watch<AddToCardProvider>();
+    bool _isDark = context.watch<DarkMode>().isDarkMode;
     //check fav
     final _favoritePro = context.watch<Favorateprovider>();
     return Scaffold(
@@ -207,7 +209,8 @@ class AddToCardPage extends StatelessWidget {
         height: 180,
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 28),
         decoration: BoxDecoration(
-          color: Colors.white,
+          border: Border.all(color: Colors.white.withValues(alpha: .05)),
+          color: _isDark ? Theme.of(context).colorScheme.surface : Colors.white,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -253,7 +256,7 @@ class AddToCardPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 50),
               ),
               onPressed: () {},
-              child: Text('Check Out'),
+              child: Text('Check Out', style: TextStyle(color: Colors.white)),
             ),
             SizedBox(height: 8),
           ],
