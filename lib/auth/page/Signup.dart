@@ -1,10 +1,12 @@
 import 'package:computer_store/auth/page/login.dart';
+import 'package:computer_store/view/home/widget/setting.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Signup extends StatefulWidget {
   final VoidCallback showLoginPage;
-  Signup({super.key, required this.showLoginPage});
+  final Function(bool) setRegistering; 
+  Signup({super.key, required this.showLoginPage, required this.setRegistering});
 
   @override
   State<Signup> createState() => _SignupState();
@@ -17,14 +19,23 @@ class _SignupState extends State<Signup> {
   final name = TextEditingController();
   bool _hidepassword = true;
 
-  Future Register() async {
-    if (passwordComfirm()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+ Future Register() async {
+  if (passwordComfirm()) {
+    widget.setRegistering(true); 
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
         email: email.text.trim(),
         password: password.text.trim(),
       );
+      await userCredential.user?.updateDisplayName(name.text.trim());
+      await FirebaseAuth.instance.currentUser?.reload();
+      await FirebaseAuth.instance.signOut();
+    } finally {
+      widget.setRegistering(false); 
     }
   }
+}
 
   bool passwordComfirm() {
     if (password.text.trim() == Comfirmpassword.text.trim()) {
@@ -67,32 +78,32 @@ class _SignupState extends State<Signup> {
                 SizedBox(height: 25),
                 _buildElevatedButtom(),
                 SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: widget.showLoginPage,
-                      child: RichText(
-                        text: TextSpan(
-                          style: TextStyle(
-                            color: Colors.grey[700],
-                            fontSize: 16,
-                          ),
-                          children: [
-                            TextSpan(text: "Already has an Account?"),
-                            TextSpan(
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              text: "Login here!",
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     GestureDetector(
+                //       onTap: widget.showLoginPage,
+                //       child: RichText(
+                //         text: TextSpan(
+                //           style: TextStyle(
+                //             color: Colors.grey[700],
+                //             fontSize: 16,
+                //           ),
+                //           children: [
+                //             TextSpan(text: "Already has an Account?"),
+                //             TextSpan(
+                //               style: TextStyle(
+                //                 color: Colors.black,
+                //                 fontWeight: FontWeight.bold,
+                //               ),
+                //               text: "Login here!",
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),
@@ -246,8 +257,13 @@ class _SignupState extends State<Signup> {
         backgroundColor: Colors.blue,
         fixedSize: Size(300, 50),
       ),
-      onPressed: () {
-        Register();
+      onPressed: () async {
+        await Register();
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => Setting()),
+        // );
+        widget.showLoginPage();
       },
       child: Text(
         "Sign Up",
