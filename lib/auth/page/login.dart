@@ -94,13 +94,11 @@ class _LoginPageState extends State<LoginPage> {
             color: Color.fromARGB(255, 80, 72, 46),
           ),
         ),
-
         SizedBox(height: 20),
-
         CustomTextfiled(
           hintText: "Email Address",
           prefixIcon: Icons.email,
-          controller: email,
+          controller: email,       
         ),
 
         SizedBox(height: 20),
@@ -129,12 +127,12 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.blue,
         fixedSize: Size(350, 50),
       ),
-      onPressed: () {
-        Login();
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Setting()),
-        );
+      onPressed: () async{
+        await Login();
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => Setting()),
+        // );
       },
       child: Text("Login", style: TextStyle(fontSize: 25, color: Colors.white)),
     );

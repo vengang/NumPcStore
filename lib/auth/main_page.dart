@@ -1,6 +1,6 @@
 import 'package:computer_store/auth/auth_page.dart';
 import 'package:computer_store/auth/page/login.dart';
-import 'package:computer_store/auth/page/profilePage.dart';
+import 'package:computer_store/view/home/widget/setting.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, shnapshot) {
         if (shnapshot.hasData) {
-          return Profilepage();
+          return Setting();
         } else {
           return AuthPage();
         }

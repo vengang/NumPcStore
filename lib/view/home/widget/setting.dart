@@ -10,7 +10,21 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  final user = FirebaseAuth.instance.currentUser;
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUser();
+  }
+
+  Future<void> _loadUser() async {
+    await FirebaseAuth.instance.currentUser?.reload();
+    setState(() {
+      user = FirebaseAuth.instance.currentUser;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +64,7 @@ class _SettingState extends State<Setting> {
           Card(
             child: ListTile(
               leading: Icon(Icons.person_3_outlined),
-              title: Text("My Prifile"),
+              title: Text("My Profile"),
               trailing: IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.keyboard_arrow_right_outlined),
