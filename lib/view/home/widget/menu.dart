@@ -4,6 +4,7 @@ import 'package:computer_store/view/home/page/add_to_card_page.dart';
 import 'package:computer_store/view/home/page/favoratePage.dart';
 import 'package:computer_store/view/home/page/homeScreen.dart';
 import 'package:computer_store/view/home/page/searchScreen.dart';
+import 'package:computer_store/view/home/widget/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
@@ -33,7 +34,7 @@ class Menu extends StatelessWidget {
         ),
 
         PersistentTabConfig(
-          screen:MainPage(),
+          screen: Setting(),
           item: ItemConfig(icon: Icon(Icons.person), title: "Me"),
         ),
       ],

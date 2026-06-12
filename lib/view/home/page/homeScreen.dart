@@ -2,6 +2,7 @@ import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/provider/darkMode.dart';
 import 'package:computer_store/view/home/widget/allProduct.dart';
 import 'package:computer_store/view/home/widget/category.dart';
+import 'package:computer_store/view/home/widget/menu.dart';
 import 'package:computer_store/view/home/widget/newProduct.dart';
 import 'package:computer_store/view/home/widget/silderShow.dart';
 import 'package:flutter/material.dart';
