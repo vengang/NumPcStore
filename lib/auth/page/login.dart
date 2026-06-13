@@ -1,11 +1,12 @@
 import 'package:computer_store/auth/page/Signup.dart';
 import 'package:computer_store/view/home/widget/custom_textfiled.dart';
+import 'package:computer_store/view/home/widget/settingg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
-  LoginPage({super.key,required this.showRegisterPage});
+  LoginPage({super.key, required this.showRegisterPage});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -55,25 +56,24 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 20),
                 _buildElevatedButtom(),
                 SizedBox(height: 20),
-                 GestureDetector(
+                GestureDetector(
                   onTap: widget.showRegisterPage,
-                   child: RichText(
-                      text: TextSpan(
-                        style: TextStyle(color: Colors.grey[700], fontSize: 16),
-                        children: [
-                          TextSpan(text: "Not a member?"),
-                          TextSpan(
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            text: "Register here!",
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(color: Colors.grey[700], fontSize: 16),
+                      children: [
+                        TextSpan(text: "Not a member?"),
+                        TextSpan(
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
+                          text: "Register here!",
+                        ),
+                      ],
                     ),
-                 ),
-                
+                  ),
+                ),
               ],
             ),
           ),
@@ -131,6 +131,10 @@ class _LoginPageState extends State<LoginPage> {
       ),
       onPressed: () {
         Login();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Setting()),
+        );
       },
       child: Text("Login", style: TextStyle(fontSize: 25, color: Colors.white)),
     );
