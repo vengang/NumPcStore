@@ -1,6 +1,7 @@
 import 'package:computer_store/view/home/widget/Darkmode.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class Setting extends StatefulWidget {
   const Setting({super.key});
@@ -89,12 +90,14 @@ class _SettingState extends State<Setting> {
           ),
           SizedBox(height: 10),
           Card(
-            child: ListTile(
-              leading: Icon(Icons.shopping_bag),
-              title: Text("My Computer"),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.keyboard_arrow_right_outlined),
+            child: InkWell(
+              onTap: () =>
+                  pushScreen(context, screen: AboutUs(), withNavBar: false),
+              child: ListTile(
+                leading: Icon(Icons.shopping_bag),
+                title: Text("About Us"),
+                trailing: Icon(Icons.keyboard_arrow_right_outlined),
+              
               ),
             ),
           ),
@@ -112,6 +115,38 @@ class _SettingState extends State<Setting> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class AboutUs extends StatelessWidget {
+  const AboutUs({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("About Us"), centerTitle: true),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+
+          children: [
+            Text(
+              '   This application was developed as part of a university assignment to demonstrate knowledge and skills in software development. The project focuses on creating a user-friendly, efficient, and reliable solution that meets user needs.',
+            ),
+            SizedBox(height: 8),
+            Text(
+              '   Through the development of this application, various technologies and programming concepts were applied, including system design, user interface development, and data management.',
+            ),
+            SizedBox(height: 8),
+            Text('    Thank you for using this application.'),
+            Spacer(),
+            Center(child: Text("Version 1.0.0 (11)")),
+            SizedBox(height: 25),
+          ],
+        ),
       ),
     );
   }
