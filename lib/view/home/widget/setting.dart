@@ -66,25 +66,22 @@ class _SettingState extends State<Setting> {
             child: ListTile(
               leading: Icon(Icons.person_3_outlined),
               title: Text("My Profile"),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.keyboard_arrow_right_outlined),
-              ),
+              trailing: Icon(Icons.keyboard_arrow_right_outlined),
             ),
           ),
           SizedBox(height: 10),
           Card(
-            child: ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Setting"),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Darkmode()),
-                  );
-                },
-                icon: Icon(Icons.keyboard_arrow_right_outlined),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Darkmode()),
+                );
+              },
+              child: ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Setting"),
+                trailing: Icon(Icons.keyboard_arrow_right_outlined),
               ),
             ),
           ),
@@ -97,20 +94,19 @@ class _SettingState extends State<Setting> {
                 leading: Icon(Icons.shopping_bag),
                 title: Text("About Us"),
                 trailing: Icon(Icons.keyboard_arrow_right_outlined),
-              
               ),
             ),
           ),
           SizedBox(height: 10),
           Card(
-            child: ListTile(
-              leading: Icon(Icons.logout),
-              title: Text("Logout"),
-              trailing: IconButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                icon: Icon(Icons.keyboard_arrow_right_outlined),
+            child: InkWell(
+              onTap: () {
+                FirebaseAuth.instance.signOut();
+              },
+              child: ListTile(
+                leading: Icon(Icons.logout),
+                title: Text("Logout"),
+                trailing: Icon(Icons.keyboard_arrow_right_outlined),
               ),
             ),
           ),

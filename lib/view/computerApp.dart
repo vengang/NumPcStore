@@ -11,17 +11,12 @@ class Computerapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => Themlogic(),
-        ),
-      ],
+      providers: [ChangeNotifierProvider(create: (_) => Themlogic())],
       child: Consumer<Themlogic>(
         builder: (context, themeLogic, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            themeMode:
-                themeLogic.dark ? ThemeMode.dark : ThemeMode.light,
+            themeMode: themeLogic.dark ? ThemeMode.dark : ThemeMode.light,
 
             theme: ThemeData(
               brightness: Brightness.light,
@@ -34,12 +29,16 @@ class Computerapp extends StatelessWidget {
 
             darkTheme: ThemeData(
               brightness: Brightness.dark,
+              appBarTheme: const AppBarTheme(
+                backgroundColor: Color(0xFF0F172A),
+                foregroundColor: Colors.white,
+              ),
               colorScheme: ColorScheme.dark(
                 primary: AppColors.primary,
                 secondary: AppColors.secondary,
                 tertiary: AppColors.tertiary,
               ),
-              scaffoldBackgroundColor: const Color(0xFF0F172A),
+              scaffoldBackgroundColor:  Color(0xFF0F172A),
             ),
 
             home: Menu(),

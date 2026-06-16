@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/provider/add_to_card.dart';
 import 'package:computer_store/provider/favorateProvider.dart';
+import 'package:computer_store/provider/themlogic.dart';
 import 'package:computer_store/service/apiModel.dart';
 import 'package:computer_store/view/home/widget/productDetail.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class AddToCardPage extends StatelessWidget {
     final _addTocardTotal = context.watch<AddToCardProvider>();
     //check fav
     final _favoritePro = context.watch<Favorateprovider>();
+    final _darkMode = context.watch<Themlogic>().dark;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -151,18 +153,6 @@ class AddToCardPage extends StatelessWidget {
                                 ),
                               ),
 
-                              // Favorite Button
-                              // InkWell(
-                              //   onTap: () => context
-                              //       .read<Favorateprovider>()
-                              //       .isFav(item),
-                              //   child: Icon(
-                              //     Icons.favorite,
-                              //     color: _favoritePro.isFav(item)
-                              //         ? Colors.red
-                              //         : Colors.grey,
-                              //   ),
-                              // ),
                               // add and remove
                               Row(
                                 children: [
@@ -207,7 +197,7 @@ class AddToCardPage extends StatelessWidget {
         height: 180,
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 28),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: _darkMode ? Theme.of(context).hoverColor : Colors.white,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -253,7 +243,7 @@ class AddToCardPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 50),
               ),
               onPressed: () {},
-              child: Text('Check Out'),
+              child: Text('Check Out', style: TextStyle(color: Colors.white)),
             ),
             SizedBox(height: 8),
           ],

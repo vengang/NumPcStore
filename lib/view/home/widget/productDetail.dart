@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/provider/add_to_card.dart';
 import 'package:computer_store/provider/favorateProvider.dart';
+import 'package:computer_store/provider/themlogic.dart';
 import 'package:computer_store/provider/urlUtil.dart';
 import 'package:computer_store/service/apiModel.dart';
 import 'package:computer_store/view/home/page/add_to_card_page.dart';
@@ -50,30 +51,9 @@ class Productdetail extends StatelessWidget {
               child: Icon(Icons.shopping_cart),
             ),
           ),
-          // Stack(
-          //   alignment: Alignment.topCenter,
-          //   children: [
-          //     IconButton(
-          //       onPressed: () {},
-          //       icon: Icon(Icons.add_shopping_cart_sharp),
-          //     ),
-          //     Positioned(
-          //       top: 8,
-          //       child: Container(
-          //         width: 15,
-          //         height: 15,
-          //         decoration: BoxDecoration(
-          //           color: Colors.red.shade300,
-          //           shape: BoxShape.circle,
-          //         ),
-          //         child: Text("1", textAlign: TextAlign.center),
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
-      body: _buildBody(),
+      body: _buildBody(context),
       bottomNavigationBar: _addToCard(context),
     );
   }
@@ -148,7 +128,8 @@ class Productdetail extends StatelessWidget {
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
+    final _darkMode = context.watch<Themlogic>();
     return ListView(
       children: [
         _sliderShow(),
@@ -214,7 +195,7 @@ class Productdetail extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: _darkMode.dark ? Theme.of(context).hoverColor : null,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -265,7 +246,7 @@ class Productdetail extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: _darkMode.dark ? Theme.of(context).hoverColor : null,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
