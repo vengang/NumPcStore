@@ -3,14 +3,17 @@
 A new Flutter project.
 
 ## Getting Started
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/56b05f32-4692-4f05-8ce1-a2789731b1c1" />
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/638fef87-d9b6-464c-a53a-194635d2d0b6" />
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/0c01ba1a-1c5d-4e3b-b1ad-4d8296d9439d" />
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/9d756054-3ffd-43db-906f-879ce9b76aae" />
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/c5bfe4fb-fe8e-410b-baf4-9e75acc0fd57" />
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/5b31fcbb-cb22-49d3-b94a-5753fee3d784" />
+<img width="1080" height="2280" alt="Screenshot_1781596935" src="https://github.com/user-attachments/assets/a28affd5-0337-469f-a9dc-3f8686c3cca5" />
+<img width="1080" height="2280" alt="Screenshot_1781596971" src="https://github.com/user-attachments/assets/98a5865a-a1a6-4a1a-ba3c-510e31d85741" />
+<img width="1080" height="2280" alt="Screenshot_1781597193" src="https://github.com/user-attachments/assets/7483a488-f5eb-4ef1-8e5f-cf57a6e22e76" />
+<img width="1080" height="2280" alt="Screenshot_1781597215" src="https://github.com/user-attachments/assets/a650e0bf-2364-4ffb-adb1-087dd8cfff4c" />
+<img width="1080" height="2280" alt="Screenshot_1781597225" src="https://github.com/user-attachments/assets/0554656f-05a0-45ff-9fda-f64d305fcfda" />
+<img width="1080" height="2280" alt="Screenshot_1781597265" src="https://github.com/user-attachments/assets/00c8f97c-141a-4106-b236-aac7a763147a" />
+
+
 Dark Mode
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/1564ab32-bb06-4022-a7ae-5f3af92a5b10" />
-<img width="443" height="815" alt="image" src="https://github.com/user-attachments/assets/94e58e3a-5c4a-433a-8a0f-9f0675b5352d" />
+<img width="1080" height="2280" alt="Screenshot_1781597287" src="https://github.com/user-attachments/assets/e0e37b4b-c3f1-4bfc-bbb8-2ba334735ae3" />
+<img width="1080" height="2280" alt="Screenshot_1781597278" src="https://github.com/user-attachments/assets/22fbfec1-7e8d-4d7c-83d6-adcd7babca9c" />
+
 
 
