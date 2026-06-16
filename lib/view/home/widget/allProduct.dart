@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:computer_store/core/const/color.dart';
 import 'package:computer_store/provider/favorateProvider.dart';
+import 'package:computer_store/provider/themlogic.dart';
 import 'package:computer_store/service/apiModel.dart';
 import 'package:computer_store/service/apiService.dart';
 import 'package:computer_store/view/home/widget/productDetail.dart';
@@ -31,6 +32,7 @@ class Allproduct extends StatelessWidget {
   //data respone
   Widget _buildListView(List<ProductModel>? items, BuildContext context) {
     final _favorite = context.watch<Favorateprovider>();
+    final _darkMode = context.watch<Themlogic>();
     if (items == null) {
       return Center();
     }
@@ -53,8 +55,8 @@ class Allproduct extends StatelessWidget {
             child: SizedBox(
               height: 100,
               child: Card(
-                // semanticContainer: true,
-                // color: Colors.black12,
+              
+                color: _darkMode.dark ? Theme.of(context).hoverColor : null,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
