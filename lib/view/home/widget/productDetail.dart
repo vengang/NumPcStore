@@ -195,7 +195,7 @@ class Productdetail extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: Container(
             decoration: BoxDecoration(
-              color: _darkMode.dark ? Theme.of(context).hoverColor : null,
+              color: _darkMode.dark ? Theme.of(context).hoverColor : Colors.white,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -246,7 +246,7 @@ class Productdetail extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: _darkMode.dark ? Theme.of(context).hoverColor : null,
+              color: _darkMode.dark ? Theme.of(context).hoverColor : Colors.white,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
